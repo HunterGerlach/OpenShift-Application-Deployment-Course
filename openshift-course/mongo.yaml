@@ -1,0 +1,7 @@
+kind: Service
+apiVersion: apps/v1
+metadata:
+- 
+spec:
+  selector:
+    labels:
