@@ -8,7 +8,7 @@
 # hlsearch on (H) or off (h):
 ~H
 # Last Search Pattern:
-~MSle0~/routes
+~MSle0~/mem
 
 # Command Line History (newest to oldest):
 :q!
@@ -19,6 +19,9 @@
 :set cursorcolor
 
 # Search String History (newest to oldest):
+?/mem
+?/lim
+?/stra
 ?/routes
 ?/quay
 ?/live
@@ -138,18 +141,26 @@
 	:
 
 # File marks:
-'0  87  0  ~/gogs-operator/deploy/role.yaml
-'1  63  5  ~/gogs-operator/deploy/role.yaml
-'2  76  6  ~/gogs-operator/deploy/role.yaml
-'3  69  0  ~/gogs-operator/deploy/role.yaml
-'4  1  0  ~/gogs-operator/deploy/role_binding.yaml
-'5  27  10  ~/gogs-operator/deploy/operator.yaml
-'6  24  32  ~/gogs-operator/deploy/operator.yaml
-'7  31  52  ~/gogs-operator/deploy/operator.yaml
-'8  17  0  ~/openshift-course/mongodb.yaml
-'9  10  2  ~/openshift-course/statefulset.yaml
+'0  111  12  /tmp/oc-edit-reard.yaml
+'1  41  26  /tmp/oc-edit-ku6vw.yaml
+'2  35  17  /tmp/oc-edit-ozryc.yaml
+'3  87  0  ~/gogs-operator/deploy/role.yaml
+'4  63  5  ~/gogs-operator/deploy/role.yaml
+'5  76  6  ~/gogs-operator/deploy/role.yaml
+'6  69  0  ~/gogs-operator/deploy/role.yaml
+'7  1  0  ~/gogs-operator/deploy/role_binding.yaml
+'8  27  10  ~/gogs-operator/deploy/operator.yaml
+'9  24  32  ~/gogs-operator/deploy/operator.yaml
 
 # Jumplist (newest first):
+-'  111  12  /tmp/oc-edit-reard.yaml
+-'  69  0  /tmp/oc-edit-reard.yaml
+-'  1  0  /tmp/oc-edit-reard.yaml
+-'  41  26  /tmp/oc-edit-ku6vw.yaml
+-'  1  0  /tmp/oc-edit-ku6vw.yaml
+-'  35  17  /tmp/oc-edit-ozryc.yaml
+-'  14  0  /tmp/oc-edit-ozryc.yaml
+-'  1  0  /tmp/oc-edit-ozryc.yaml
 -'  87  0  ~/gogs-operator/deploy/role.yaml
 -'  63  0  ~/gogs-operator/deploy/role.yaml
 -'  76  0  ~/gogs-operator/deploy/role.yaml
@@ -241,14 +252,24 @@
 -'  17  0  ~/openshift-course/readiness.yaml
 -'  1  0  ~/openshift-course/readiness.yaml
 -'  1  0  /tmp/oc-edit-oscmk.yaml
--'  1  0  /tmp/oc-edit-oscmk.yaml
--'  1  0  /tmp/oc-edit-oscmk.yaml
--'  1  0  /tmp/oc-edit-oscmk.yaml
--'  1  0  ~/openshift-course/liveness.yaml
--'  17  0  ~/openshift-course/liveness.yaml
--'  17  0  ~/openshift-course/readiness.yaml
 
 # History of marks within files (newest to oldest):
+
+> /tmp/oc-edit-reard.yaml
+	"	111	12
+
+> /tmp/oc-edit-ku6vw.yaml
+	"	41	26
+	^	41	27
+	.	41	26
+	+	73	23
+	+	41	26
+
+> /tmp/oc-edit-ozryc.yaml
+	"	35	17
+	^	27	18
+	.	35	17
+	+	35	17
 
 > ~/gogs-operator/deploy/role.yaml
 	"	87	0
@@ -402,22 +423,3 @@
 	+	51	19
 	+	52	25
 	+	53	18
-
-> /tmp/oc-edit-n10s4.yaml
-	"	64	0
-
-> /tmp/oc-edit-qczoh.yaml
-	"	57	13
-	^	57	14
-	.	58	0
-	+	51	39
-	+	60	37
-	+	58	0
-	+	55	19
-	+	58	0
-
-> ~/openshift-course/writelog
-	"	5	3
-	^	5	4
-	.	5	0
-	+	5	0
