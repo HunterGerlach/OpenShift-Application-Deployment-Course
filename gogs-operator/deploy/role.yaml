@@ -15,8 +15,15 @@ rules:
   - events
   - configmaps
   - secrets
+  - serviceaccounts
   verbs:
-  - '*'
+  - create
+  - update
+  - delete
+  - get
+  - list
+  - watch
+  - patch
 - apiGroups:
   - apps
   resources:
@@ -25,14 +32,13 @@ rules:
   - replicasets
   - statefulsets
   verbs:
-  - '*'
-- apiGroups:
-  - monitoring.coreos.com
-  resources:
-  - servicemonitors
-  verbs:
-  - get
   - create
+  - update
+  - delete
+  - get
+  - list
+  - watch
+  - patch
 - apiGroups:
   - apps
   resourceNames:
@@ -57,6 +63,25 @@ rules:
 - apiGroups:
   - gpte.opentlc.com
   resources:
-  - '*'
+  - gogs
+  - gogs/status
   verbs:
-  - '*'
+  - create
+  - update
+  - delete
+  - get
+  - list
+  - watch
+  - patch
+- apiGroups:
+  - route.openshift.io
+  resources:
+  - routes
+  verbs:
+  - create
+  - update
+  - delete
+  - get
+  - list
+  - watch
+  - patch
