@@ -11,8 +11,8 @@
 ~MSle0~/force
 
 # Command Line History (newest to oldest):
-:q!
 :wq
+:q!
 :help
 :set cursorcolumn
 :setglobal cursorcolumn
@@ -162,18 +162,19 @@
 	h
 
 # File marks:
-'0  1  0  /tmp/oc-edit-6k5eq.yaml
-'1  47  21  /tmp/oc-edit-nvx59.yaml
-'2  7  15  ~/openshift-tasks/nexus_settings.xml
-'3  16  101  ~/openshift-tasks/.git/config
-'4  7  6  ~/openshift-tasks/nexus_openshift_settings.xml
-'5  8  111  ~/openshift-tasks/nexus_settings.xml
-'6  110  30  ~/openshift-tasks/pom.xml
-'7  19  12  ~/openshift-tasks/nexus_openshift_settings.xml
-'8  1  0  ~/openshift-tasks/nexus_settings.xml
-'9  15  23  ~/nexus_settings.xml
+'0  1  4  ~/.gitignore
+'1  1  0  /tmp/oc-edit-6k5eq.yaml
+'2  47  21  /tmp/oc-edit-nvx59.yaml
+'3  7  15  ~/openshift-tasks/nexus_settings.xml
+'4  16  101  ~/openshift-tasks/.git/config
+'5  7  6  ~/openshift-tasks/nexus_openshift_settings.xml
+'6  8  111  ~/openshift-tasks/nexus_settings.xml
+'7  110  30  ~/openshift-tasks/pom.xml
+'8  19  12  ~/openshift-tasks/nexus_openshift_settings.xml
+'9  1  0  ~/openshift-tasks/nexus_settings.xml
 
 # Jumplist (newest first):
+-'  1  4  ~/.gitignore
 -'  1  0  /tmp/oc-edit-6k5eq.yaml
 -'  47  21  /tmp/oc-edit-nvx59.yaml
 -'  1  0  /tmp/oc-edit-nvx59.yaml
@@ -271,9 +272,14 @@
 -'  1  0  /tmp/oc-edit-oscmk.yaml
 -'  1  0  /tmp/oc-edit-oscmk.yaml
 -'  1  0  /tmp/oc-edit-oscmk.yaml
--'  17  0  ~/openshift-course/readiness.yaml
 
 # History of marks within files (newest to oldest):
+
+> ~/.gitignore
+	"	1	4
+	^	1	5
+	.	1	4
+	+	1	4
 
 > /tmp/oc-edit-6k5eq.yaml
 	"	1	0
@@ -325,9 +331,6 @@
 	"	96	45
 
 > ~/.git/config
-	"	1	0
-
-> ~/.gitignore
 	"	1	0
 
 > /tmp/oc-edit-reard.yaml
