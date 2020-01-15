@@ -228,3 +228,390 @@ watch oc get pods
 oc logs rocketchat-1-swc7b 
 oc expose svc/rocketchat
 oc get routes
+whoami
+tail -n 20 history
+ls
+ls -la
+tail -n 20 .bash_history 
+ls
+git status
+git add .
+git status
+git commit -am "Day 1, 1.5"
+git status
+clear
+ls
+cd openshift-course/
+ls
+rm Dockerfile writelog 
+ls
+git commit -am "rm unused files"
+git config --global user.name "Hunter Gerlach"
+git config --global user.email "hgerlach@redhat.com"
+clar
+clear
+<li><p>Download the Operator SDK binary into <code>/usr/bin</code>:</p><div class="admonitionblock note"><table><tbody><tr><td class="icon"><i class="icon-note" title="Note"></i></td><td class="content"><div class="paragraph"><p>This lab uses version <code>v0.12.0</code> because the Operator SDK changes quite frequently and you need to use a well-defined snapshot of the repository to guarantee a smooth lab.</p></div></td></tr></tbody></table></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><code class="sh language-sh hljs bash">sudo wget https://github.com/operator-framework/operator-sdk/releases/download/v0.<span class="hljs-number">12.0</span>/operator-sdk-v0.<span class="hljs-number">12.0</span>-x86_64-linux-gnu -O /usr/bin/operator-sdk
+sudo wget https://github.com/operator-framework/operator-sdk/releases/download/v0.12.0/operator-sdk-v0.12.0-x86_64-linux-gnu -O /usr/bin/operator-sdk
+sudo chmod +x /usr/bin/operator-sdk
+echo EDITOR
+echo $EDITOR
+export EDITOR=/usr/bin/vim
+cd $HOME
+pwd
+ls
+git clone https://github.com/redhat-gpte-devopsautomation/ansible-operator-roles
+cd ansible-operator-roles/
+git checkout v0.12.0
+cd $HOME
+cd ansible-operator-roles/playbooks/
+cat gogs.yaml 
+less gogs.yaml 
+ls
+cd ../../
+cd ansible-operator-roles/roles/
+ls
+cd postgresql-ocp/
+ls
+cd tasks/
+ls
+vim
+echo $EDITOR
+vim
+ls
+less main.yml 
+cd $HOME
+operator-sdk
+operator-sdk version
+operator-sdk new gogs-operator --api-version=gpte.opentlc.com/v1alpha1 --kind=Gogs --type=ansible
+ls
+cd gogs-operator/
+ls
+git add .
+git commit -am "Create new Gogs operator"
+clear
+ls
+cd ..
+ls
+operator-sdk new gogs-operator --api-version=gpte.opentlc.com/v1alpha1 --kind=Gogs --type=ansible --generator=playbook
+ls
+rm -rf gogs-operator/
+operator-sdk new gogs-operator --api-version=gpte.opentlc.com/v1alpha1 --kind=Gogs --type=ansible --generator-playbook
+operator-sdk new gogs-operator --api-version=gpte.opentlc.com/v1alpha1 --kind=Gogs --type=ansible --generate-playbook
+ls
+cd gogs-operator/
+ls
+cd ..
+ls
+git add .
+git status
+git commit -am "Re-do operator creation with --generate-playbook"
+cd gogs-operator/
+rm -rf roles playbook.yml 
+ls
+mkdir roles
+cp -R ../ansible-operator-roles/roles/postgresql-ocp/ ./roles/
+cp -R ../ansible-operator-roles/roles/gogs-ocp/ ./roles/
+cp ../ansible-operator-roles/playbooks/gogs.yaml ./playbook.yml
+ls
+less watches.yaml 
+ls
+less build/Dockerfile 
+cat watches.yaml 
+cat build/Dockerfile 
+man podman
+sudo podman login -u hgerlach quay.io
+git status
+cd ..
+git status
+ls
+vim .gitignore
+cd .git
+ls
+cd config
+vim config
+ls
+cd hooks
+ls
+cd ..
+ls
+cd ..
+ls
+git status
+git add .
+git add --all
+git status
+git commit -am "Login to quay.io via podman"
+git log
+clear
+ls
+cd gogs-operator/
+ls
+cd build/
+ls
+cat Dockerfile 
+cd ..
+ls
+operator-sdk build --help
+operator-sdk build quay.io/hgerlach/gogs-operator:v0.0.1 --image-builder podman
+export QUAY_ID=hgerlach
+echo $QUAY_ID
+sudo operator-sdk build quay.io/${QUAY_ID}/gogs-operator:v0.0.1 --image-builder podman
+sudo podman push quay.io/${QUAY_ID}/gogs-operator:v0.0.1
+cd deploy/
+vim operator.yaml 
+oc get crd
+echo $GUID
+oc new-project ${GUID}-gogs --display-name="Gogs"
+ls
+oc create -f operator.yaml 
+ls
+vim operator.yaml 
+oc create -f operator.yaml 
+ls
+oc create -f role_binding.yaml 
+vim operator.yaml 
+vim role_binding.yaml 
+ls
+oc status
+watch oc get pods
+oc logs gogs-operator
+oc get pods
+oc get gogs
+vim role_binding.yaml 
+vim
+oc get pods
+watch oc get pods
+vim role_binding.yaml 
+ls
+ls -la
+rm -rf .role_binding.yaml.swp 
+ls
+oc create -f role.yaml 
+oc delete gogs_operator
+ls
+oc apply -f service_account.yaml 
+vim role.yaml 
+oc apply -f role.yaml 
+oc api-resources
+oc api-resources | grep gpte
+clear
+oc apply -f role.yaml 
+ls
+oc delete --help
+oc delete -f operator.yaml 
+oc apply -f role.yaml 
+vim role.yaml 
+oc apply -f role.yaml 
+vim role.yaml 
+less role
+less role.yaml 
+clear
+oc apply -f role.yaml 
+git status
+git add .
+git status
+git add --all
+git commit -am "Operator lesson - forbidden"
+git status
+cd $HOME
+git status
+git add .
+git status
+git add --all
+git status
+git commit -am "Until Forbidden Operators"
+git status
+ls
+echo ${REGISTRY}
+export REGISTRY=default-route-openshift-image-registry.apps.$(oc whomai --show-server | cut -d. -f2- | cut -d: -f1)
+export REGISTRY=default-route-openshift-image-registry.apps.$(oc whoami --show-server | cut -d. -f2- | cut -d: -f1)
+echo $(REGISTRY)
+echo $REGISTRY
+sudo podman login -u $(oc whoami) -p $(oc whoami -t) ${REGISTRY}
+echo $GUID
+clear
+sudo podman login -u $(oc whoami) -p $(oc whoami -t) ${REGISTRY}
+oc whoami
+oc login
+sudo podman login -u $(oc whoami) -p $(oc whoami -t) ${REGISTRY}
+oc new-project ${GUID}-nexus --display-name="${GUID} Shared Nexus"
+oc projects
+oc new-app --help
+oc new-app sonatype/nexus3:latest --name="nexus"
+oc status
+oc expose nexus
+oc expose svc/nexus
+oc rollout --help
+oc rollout pause --help
+oc rollout pause dc/nexus
+echo $EDITOR
+oc edit dc
+oc set --help
+oc set resources --help
+oc set resources dc nexus --limits=memory=2Gi,cpu=2 --requests=memory=1Gi,cpu=500m
+oc edit dc
+oc set volume dc/nexus --add --overwrite --name=nexus-volume-1 --mount-path=/nexus-data/ --type persistentVolumeClaim --claim-name=nexus-pvc --claim-size=10Gi
+oc edit dc
+oc set probes --liveness --help
+oc set probe dc/nexus --liveness --failure-threshold 3 --initial-delay-seconds 60 --echo ok
+oc set probe dc/nexus --liveness --failure-threshold 3 --initial-delay-seconds 60 -- echo ok
+oc set probe dc/nexus --readiness --failure-threshold 3 --initial-delay-seconds 60 --get-url=http://:8081/
+git add .
+git status
+git add .bash_history
+git status
+git commit -am "Add bash_history"
+git status
+oc rollout resume dc/nexus
+watch oc get pods
+oc get pods
+oc get routes
+oc get pods
+export NEXUS_PASSWORD=$(oc rsh nexus-2-qzgk6 cat /nexus-data/admin.password)
+echo $NEXUS_PASSWORD
+curl -o setup_nexus3.sh -s https://raw.githubusercontent.com/redhat-gpte-devopsautomation/ocp_advanced_development_resources/master/nexus/setup_nexus3.sh
+chmod +x setup_nexus3.sh 
+./setup_nexus3.sh admin $NEXUS_PASSWORD http://$(oc get route nexus --template='{{.spec.host }}')
+rm setup_nexus3.sh 
+git add .
+git status
+git commit -am "Nexus setup"
+curl --help
+curl -I http://nexus-ca4f-nexus.apps.cluster-b0ef.b0ef.example.opentlc.com/
+curl -I http://nexus-ca4f-nexus.apps.cluster-b0ef.b0ef.example.opentlc.com:5000
+watch oc get pods
+curl -I http://nexus-ca4f-nexus.apps.cluster-b0ef.b0ef.example.opentlc.com --help
+curl -I http://nexus-ca4f-nexus.apps.cluster-b0ef.b0ef.example.opentlc.com:5000
+oc apply -f role.yaml 
+ls
+cd gogs-operator/
+oc apply -f role.yaml 
+ls
+cd roles/
+ls
+cd gogs-ocp/
+ls
+cd ../
+ls
+cd ..
+ls
+cd deploy/
+ls
+oc apply -f role.yaml 
+oc apply -f role_binding.yaml 
+oc apply -f operator.yaml 
+oc get pods
+oc projects
+oc delete -f operator.yaml 
+oc delete -f role_binding.yaml 
+oc delete -f role.yaml 
+cd project gogs
+oc project gogs
+oc project $GUID-gogs
+oc projects
+oc apply -f role.yaml 
+oc apply -f role_binding.yaml 
+oc apply -f operator.yaml 
+oc get pods
+watch oc get pods
+oc logs -c operator -f gogs-operator-54f696b8cc-c7jp7 
+echo "apiVersion: gpte.opentlc.com/v1alpha1
+kind: Gogs
+metadata:
+  name: gogs
+spec:
+  postgresqlVolumeSize: 4Gi
+  gogsVolumeSize: 4Gi
+  gogsSsl: True" > $HOME/gogs-operator/gogs.yaml
+cat \$HOME/gogs-operator/gogs.yaml 
+ls
+pwd
+cd ../
+ls
+cat gogs.yaml 
+oc apply -f gogs.yaml 
+oc get operators
+watch oc get pods
+oc logs -c operator -f gogs-operator-54f696b8cc-c7jp7 
+watch oc get pods
+oc logs -c operator -f gogs-operator-54f696b8cc-c7jp7 
+watch oc get pods
+oc logs -c operator -f gogs-operator-54f696b8cc-c7jp7 
+watch oc get pods
+oc logs -c ansible -f gogs-operator-54f696b8cc-c7jp7 
+oc logs -c --help
+oc get gogs
+oc describe gogs gogs
+oc get route
+echo "apiVersion: gpte.opentlc.com/v1alpha1
+kind: Gogs
+metadata:
+  name: gogs
+spec:
+  postgresqlVolumeSize: 4Gi
+  gogsVolumeSize: 4Gi
+  gogsSsl: False" > $HOME/gogs-operator/gogs-no-ssl.yaml
+oc create -f gogs-no-ssl.yaml 
+echo "apiVersion: gpte.opentlc.com/v1alpha1
+kind: Gogs
+metadata:
+  name: gogs-no-ssl
+spec:
+  postgresqlVolumeSize: 4Gi
+  gogsVolumeSize: 4Gi
+  gogsSsl: False" > $HOME/gogs-operator/gogs-no-ssl.yaml
+cat gogs-no-ssl.yaml 
+oc create -f gogs-no-ssl.yaml 
+watch oc get pods
+oc describe gogs gogs
+oc get route
+watch oc get pods
+oc projects
+oc project ca4f-nexus 
+oc project
+oc projects
+oc get pods
+oc expose dc nexus --port=5000 --name=nexus-registry 
+oc route edge nexus-registry --service=nexus-registry --port=5000
+oc create route edge nexus-registry --service=nexus-registry --port=5000
+oc get routes -n $GUID-nexus
+oc get routes
+oc new-project $GUID-sonarqube --display-name="${GUID} Shared Sonarqube"
+oc projects
+oc new-app template=postgresql-persistent --param POSTGRESQL_USER=sonar --param POSTGRESQL_PASSWORD=sonar --param POSTGRESQL_DATABASE=sonar --param VOLUME_CAPACITY=4Gi --labels=app=sonarqube_db
+oc new-app --template=postgresql-persistent --param POSTGRESQL_USER=sonar --param POSTGRESQL_PASSWORD=sonar --param POSTGRESQL_DATABASE=sonar --param VOLUME_CAPACITY=4Gi --labels=app=sonarqube_db
+watch oc get pods
+oc logs postgresql-1-mxqw6 
+watch oc get pods
+oc new-app --docker-image=quay.io/gpte-devops-automation/sonarqube:7.9.1 --env=SONARQUBE_JDBC_USERNAME=sonar --env=SONARQUBE_JDBC_PASSWORD=sonar --env=SONARQUBE_JDBC_URL=jdbc:postgresql://postgresql/sonar --labels=app=sonarqube
+watch oc get pods
+oc get pods -w
+watch oc get pods
+oc rollout pause dc/sonarqube
+oc expose route
+oc expose dc/sonarqube
+oc status
+oc expose dc/sonarqube
+oc get routes
+oc get routes -n ca4f-sonarqube
+oc expose svc/sonarqube
+oc set volume dc/sonarqube --add -overwrite --name=sonarqube-volume-1 --mount-path=/opt/sonarqube/data/ --type persistentVolumeClaim --claim-name=sonarqube-pvc --claim-size=5Gi
+oc set volume dc/sonarqube --add --overwrite --name=sonarqube-volume-1 --mount-path=/opt/sonarqube/data/ --type persistentVolumeClaim --claim-name=sonarqube-pvc --claim-size=5Gi
+oc set resources dc nexus --limits=memory=2Gi,cpu=2 --requests=memory=1Gi,cpu=500m
+oc set resources dc sonarqube --limits=memory=3Gi,cpu=2 --requests=memory=2Gi,cpu=1
+oc patch dc sonarqube --patch='{"spec":{"strategy":{"type":"Recreate"}}}'
+oc set probe dc/sonarqube --liveness --failure-threshold 3 --initial-delay-seconds 40 --get-url=http://:9000/about
+oc set probe dc/sonarqube --readiness --failure-threshold 3 --initial-delay-seconds 20 --get-url=http://:9000/about
+oc rollout resume dc/sonarqube
+watch oc get pods
+oc get routes
+cd $HOME
+git add .
+git commit -am "Add sonarqube
+"
+git status
+git clone https://github.com/redhat-gpte-devopsautomation/openshift-tasks.git
+cd openshift-tasks/
+git remote add gogs http://hgerlach:redhat@$(oc get route gogs-gogs -n ${GUID}-gogs --template='{{ .spec.host }}')/CICDLabs/openshift-tasks.git
+git push -u gogs master

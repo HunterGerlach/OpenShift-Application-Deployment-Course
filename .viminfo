@@ -8,9 +8,10 @@
 # hlsearch on (H) or off (h):
 ~H
 # Last Search Pattern:
-~MSle0~/mem
+~MSle0~/quay
 
 # Command Line History (newest to oldest):
+:help
 :q!
 :wq
 :set cursorcolumn
@@ -19,6 +20,9 @@
 :set cursorcolor
 
 # Search String History (newest to oldest):
+?/ex
+?/z
+?/zz
 ?/mem
 ?/lim
 ?/stra
@@ -141,31 +145,19 @@
 	:
 
 # File marks:
-'0  111  12  /tmp/oc-edit-reard.yaml
-'1  41  26  /tmp/oc-edit-ku6vw.yaml
-'2  35  17  /tmp/oc-edit-ozryc.yaml
-'3  87  0  ~/gogs-operator/deploy/role.yaml
-'4  63  5  ~/gogs-operator/deploy/role.yaml
-'5  76  6  ~/gogs-operator/deploy/role.yaml
-'6  69  0  ~/gogs-operator/deploy/role.yaml
-'7  1  0  ~/gogs-operator/deploy/role_binding.yaml
-'8  27  10  ~/gogs-operator/deploy/operator.yaml
-'9  24  32  ~/gogs-operator/deploy/operator.yaml
+'0  11  0  ~/gogs-operator/deploy/role_binding.yaml
+'1  27  10  ~/gogs-operator/deploy/operator.yaml
+'2  24  32  ~/gogs-operator/deploy/operator.yaml
+'3  31  52  ~/gogs-operator/deploy/operator.yaml
+'4  17  0  ~/openshift-course/mongodb.yaml
+'5  10  2  ~/openshift-course/statefulset.yaml
+'6  7  1  ~/openshift-course/mongo.yaml
+'7  1  24  ~/openshift-course/mongo.yaml
+'8  1  0  ~/openshift-course/statefulset
+'9  8  0  ~/openshift-course/mongo.yaml
 
 # Jumplist (newest first):
--'  111  12  /tmp/oc-edit-reard.yaml
--'  69  0  /tmp/oc-edit-reard.yaml
--'  1  0  /tmp/oc-edit-reard.yaml
--'  41  26  /tmp/oc-edit-ku6vw.yaml
--'  1  0  /tmp/oc-edit-ku6vw.yaml
--'  35  17  /tmp/oc-edit-ozryc.yaml
--'  14  0  /tmp/oc-edit-ozryc.yaml
--'  1  0  /tmp/oc-edit-ozryc.yaml
--'  87  0  ~/gogs-operator/deploy/role.yaml
--'  63  0  ~/gogs-operator/deploy/role.yaml
--'  76  0  ~/gogs-operator/deploy/role.yaml
--'  69  2  ~/gogs-operator/deploy/role.yaml
--'  1  0  ~/gogs-operator/deploy/role.yaml
+-'  11  0  ~/gogs-operator/deploy/role_binding.yaml
 -'  1  0  ~/gogs-operator/deploy/role_binding.yaml
 -'  27  10  ~/gogs-operator/deploy/operator.yaml
 -'  24  10  ~/gogs-operator/deploy/operator.yaml
@@ -252,8 +244,32 @@
 -'  17  0  ~/openshift-course/readiness.yaml
 -'  1  0  ~/openshift-course/readiness.yaml
 -'  1  0  /tmp/oc-edit-oscmk.yaml
+-'  1  0  /tmp/oc-edit-oscmk.yaml
+-'  1  0  /tmp/oc-edit-oscmk.yaml
+-'  1  0  /tmp/oc-edit-oscmk.yaml
+-'  1  0  ~/openshift-course/liveness.yaml
+-'  17  0  ~/openshift-course/liveness.yaml
+-'  17  0  ~/openshift-course/readiness.yaml
+-'  1  0  ~/openshift-course/readiness.yaml
+-'  1  0  /tmp/oc-edit-oscmk.yaml
+-'  1  0  /tmp/oc-edit-oscmk.yaml
+-'  1  0  /tmp/oc-edit-oscmk.yaml
+-'  1  0  /tmp/oc-edit-oscmk.yaml
+-'  17  0  ~/openshift-course/readiness.yaml
 
 # History of marks within files (newest to oldest):
+
+> ~/gogs-operator/deploy/role_binding.yaml
+	"	11	0
+
+> /usr/share/vim/vim74/doc/help.txt
+	"	96	45
+
+> ~/.git/config
+	"	1	0
+
+> ~/.gitignore
+	"	1	0
 
 > /tmp/oc-edit-reard.yaml
 	"	111	12
@@ -381,45 +397,3 @@
 	^	56	18
 	.	56	17
 	+	56	17
-
-> /tmp/oc-edit-r3gfs.yaml
-	"	53	18
-	^	53	19
-	.	53	18
-	+	53	18
-
-> /tmp/oc-edit-cg78f.yaml
-	"	60	37
-	^	60	38
-	.	61	0
-	+	53	20
-	+	55	7
-	+	53	7
-	+	52	16
-	+	55	16
-	+	55	0
-	+	57	20
-	+	54	49
-	+	61	0
-
-> /tmp/oc-edit-us8ni.yaml
-	"	79	8
-	^	73	3
-	.	1	3
-	+	1	3
-
-> /tmp/oc-edit-ax76j.yaml
-	"	53	18
-	^	53	19
-	.	53	18
-	+	51	16
-	+	52	13
-	+	54	6
-	+	51	0
-	+	61	49
-	+	65	8
-	+	64	8
-	+	66	18
-	+	51	19
-	+	52	25
-	+	53	18
