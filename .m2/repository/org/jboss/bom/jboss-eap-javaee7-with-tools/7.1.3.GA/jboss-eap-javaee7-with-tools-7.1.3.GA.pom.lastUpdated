@@ -1,0 +1,5 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Wed Jan 15 15:51:35 UTC 2020
+http\://nexus-ca4f-nexus.apps.cluster-b0ef.b0ef.example.opentlc.com/repository/maven-all-public/.lastUpdated=1579103495552
+http\://nexus-ca4f-nexus.apps.shared-dev.dev.openshift.opentlc.com/repository/maven-all-public/.error=Could not transfer artifact org.jboss.bom\:jboss-eap-javaee7-with-tools\:pom\:7.1.3.GA from/to Nexus (http\://nexus-ca4f-nexus.apps.shared-dev.dev.openshift.opentlc.com/repository/maven-all-public/)\: Failed to transfer file http\://nexus-ca4f-nexus.apps.shared-dev.dev.openshift.opentlc.com/repository/maven-all-public/org/jboss/bom/jboss-eap-javaee7-with-tools/7.1.3.GA/jboss-eap-javaee7-with-tools-7.1.3.GA.pom with status code 503
+@default-Nexus-http\://nexus-ca4f-nexus.apps.shared-dev.dev.openshift.opentlc.com/repository/maven-all-public/.lastUpdated=1579103029330

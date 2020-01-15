@@ -1,0 +1,6 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Wed Jan 15 19:14:57 UTC 2020
+maven-artifact-manager-2.2.1.jar>central=
+maven-artifact-manager-2.2.1.pom>Nexus=
+maven-artifact-manager-2.2.1.pom>central=
+maven-artifact-manager-2.2.1.jar>Nexus=

@@ -8,18 +8,20 @@
 # hlsearch on (H) or off (h):
 ~H
 # Last Search Pattern:
-~MSle0~/quay
+~MSle0~/force
 
 # Command Line History (newest to oldest):
-:help
 :q!
 :wq
+:help
 :set cursorcolumn
 :setglobal cursorcolumn
 :setGlobal cursorcolumn
 :set cursorcolor
 
 # Search String History (newest to oldest):
+?/force
+?/java
 ?/ex
 ?/z
 ?/zz
@@ -42,7 +44,28 @@
 # Input Line History (newest to oldest):
 
 # Registers:
-""1	LINE	0
+"1	CHAR	0
+	version="1.0"?>
+	<settings>
+	  <mirrors>
+	    <mirror>
+	      <id>nexus</id>
+	      <name>Nexus Public Mirror</name>
+	      <url>http://nexus3.opentlc-shared.svc.cluster.local:8081/repository/maven-all-public/</url>
+	      <mirrorOf>*</mirrorOf>
+"2	LINE	0
+	    </mirror>
+	  </mirrors>
+	  <servers>
+	    <server>
+	      <id>nexus</id>
+	      <username>admin</username>
+	      <password>admin123</password>
+	    </server>
+	  </servers>
+	</settings>
+	
+"3	LINE	0
 	      loadBalancerSourceRanges  <[]string>
 	      ports     <[]Object>
 	         name   <string>
@@ -63,7 +86,7 @@
 	            hostname    <string>
 	            ip  <string>
 	
-"2	LINE	0
+"4	LINE	0
 	         time   <string>
 	      name      <string>
 	      namespace <string>
@@ -84,7 +107,7 @@
 	      externalTrafficPolicy     <string>
 	      healthCheckNodePort       <integer>
 	      loadBalancerIP    <string>
-"3	LINE	0
+"5	LINE	0
 	                  reason        <string>
 	               group    <string>
 	               kind     <string>
@@ -105,7 +128,7 @@
 	         fields <map[string]>
 	         manager        <string>
 	         operation      <string>
-"4	LINE	0
+"6	LINE	0
 	
 	   metadata     <Object>
 	      annotations       <map[string]string>
@@ -126,37 +149,50 @@
 	               causes   <[]Object>
 	                  field <string>
 	                  message       <string>
-"5	LINE	0
+"7	LINE	0
 	
 	```
-"6	LINE	0
+"8	LINE	0
 	  clusterIP: None
 	  ports:
-"7	LINE	0
+"9	LINE	0
 	  annotations:
 	    service.alpha.kubernetes.io/tolerate-unready-endpoints: "true"
-"8	LINE	0
-	        command:
-	        - /bin/sh
-"9	LINE	0
-	[remote "origin"]
-		url = git@github.com:HunterGerlach/OpenShift-Application-Deployment-Course.git
-"-	CHAR	0
-	:
+""-	CHAR	0
+	h
 
 # File marks:
-'0  11  0  ~/gogs-operator/deploy/role_binding.yaml
-'1  27  10  ~/gogs-operator/deploy/operator.yaml
-'2  24  32  ~/gogs-operator/deploy/operator.yaml
-'3  31  52  ~/gogs-operator/deploy/operator.yaml
-'4  17  0  ~/openshift-course/mongodb.yaml
-'5  10  2  ~/openshift-course/statefulset.yaml
-'6  7  1  ~/openshift-course/mongo.yaml
-'7  1  24  ~/openshift-course/mongo.yaml
-'8  1  0  ~/openshift-course/statefulset
-'9  8  0  ~/openshift-course/mongo.yaml
+'0  1  0  /tmp/oc-edit-6k5eq.yaml
+'1  47  21  /tmp/oc-edit-nvx59.yaml
+'2  7  15  ~/openshift-tasks/nexus_settings.xml
+'3  16  101  ~/openshift-tasks/.git/config
+'4  7  6  ~/openshift-tasks/nexus_openshift_settings.xml
+'5  8  111  ~/openshift-tasks/nexus_settings.xml
+'6  110  30  ~/openshift-tasks/pom.xml
+'7  19  12  ~/openshift-tasks/nexus_openshift_settings.xml
+'8  1  0  ~/openshift-tasks/nexus_settings.xml
+'9  15  23  ~/nexus_settings.xml
 
 # Jumplist (newest first):
+-'  1  0  /tmp/oc-edit-6k5eq.yaml
+-'  47  21  /tmp/oc-edit-nvx59.yaml
+-'  1  0  /tmp/oc-edit-nvx59.yaml
+-'  7  15  ~/openshift-tasks/nexus_settings.xml
+-'  8  6  ~/openshift-tasks/nexus_settings.xml
+-'  16  101  ~/openshift-tasks/.git/config
+-'  1  0  ~/openshift-tasks/.git/config
+-'  7  6  ~/openshift-tasks/nexus_openshift_settings.xml
+-'  1  0  ~/openshift-tasks/nexus_settings.xml
+-'  110  30  ~/openshift-tasks/pom.xml
+-'  97  30  ~/openshift-tasks/pom.xml
+-'  90  29  ~/openshift-tasks/pom.xml
+-'  83  15  ~/openshift-tasks/pom.xml
+-'  72  30  ~/openshift-tasks/pom.xml
+-'  1  0  ~/openshift-tasks/pom.xml
+-'  19  4  ~/openshift-tasks/nexus_openshift_settings.xml
+-'  1  0  ~/openshift-tasks/nexus_openshift_settings.xml
+-'  15  23  ~/nexus_settings.xml
+-'  1  0  ~/nexus_settings.xml
 -'  11  0  ~/gogs-operator/deploy/role_binding.yaml
 -'  1  0  ~/gogs-operator/deploy/role_binding.yaml
 -'  27  10  ~/gogs-operator/deploy/operator.yaml
@@ -236,28 +272,51 @@
 -'  1  0  /tmp/oc-edit-oscmk.yaml
 -'  1  0  /tmp/oc-edit-oscmk.yaml
 -'  17  0  ~/openshift-course/readiness.yaml
--'  1  0  ~/openshift-course/readiness.yaml
--'  1  0  /tmp/oc-edit-oscmk.yaml
--'  1  0  /tmp/oc-edit-oscmk.yaml
--'  1  0  /tmp/oc-edit-oscmk.yaml
--'  1  0  /tmp/oc-edit-oscmk.yaml
--'  17  0  ~/openshift-course/readiness.yaml
--'  1  0  ~/openshift-course/readiness.yaml
--'  1  0  /tmp/oc-edit-oscmk.yaml
--'  1  0  /tmp/oc-edit-oscmk.yaml
--'  1  0  /tmp/oc-edit-oscmk.yaml
--'  1  0  /tmp/oc-edit-oscmk.yaml
--'  1  0  ~/openshift-course/liveness.yaml
--'  17  0  ~/openshift-course/liveness.yaml
--'  17  0  ~/openshift-course/readiness.yaml
--'  1  0  ~/openshift-course/readiness.yaml
--'  1  0  /tmp/oc-edit-oscmk.yaml
--'  1  0  /tmp/oc-edit-oscmk.yaml
--'  1  0  /tmp/oc-edit-oscmk.yaml
--'  1  0  /tmp/oc-edit-oscmk.yaml
--'  17  0  ~/openshift-course/readiness.yaml
 
 # History of marks within files (newest to oldest):
+
+> /tmp/oc-edit-6k5eq.yaml
+	"	1	0
+
+> /tmp/oc-edit-nvx59.yaml
+	"	47	21
+	^	47	22
+	.	47	21
+	+	47	21
+
+> ~/openshift-tasks/nexus_settings.xml
+	"	7	15
+	^	7	16
+	.	7	15
+	+	7	9
+	+	8	111
+	+	7	15
+
+> ~/openshift-tasks/.git/config
+	"	16	101
+	^	16	102
+	.	16	101
+	+	16	101
+
+> ~/openshift-tasks/nexus_openshift_settings.xml
+	"	7	6
+	^	7	28
+	.	7	27
+	+	19	0
+	+	19	0
+	+	1	21
+	+	18	0
+	+	7	27
+
+> ~/openshift-tasks/pom.xml
+	"	110	30
+
+> ~/nexus_settings.xml
+	"	15	23
+	^	15	24
+	.	7	26
+	+	18	0
+	+	7	26
 
 > ~/gogs-operator/deploy/role_binding.yaml
 	"	11	0
@@ -352,48 +411,3 @@
 
 > ~/openshift-course/statefulset
 	"	1	0
-
-> /tmp/oc-edit-0zwnu.yaml
-	"	72	13
-	^	72	14
-	.	60	28
-	+	60	28
-
-> /tmp/oc-edit-cj2sc.yaml
-	"	61	18
-	^	61	19
-	.	61	18
-	+	62	8
-	+	61	18
-
-> /tmp/oc-edit-lehoy.yaml
-	"	51	13
-	^	51	14
-	.	51	13
-	+	51	13
-
-> /tmp/oc-edit-i7nbw.yaml
-	"	48	26
-	^	48	27
-	.	48	26
-	+	49	7
-	+	48	26
-
-> /tmp/oc-edit-cp5ni.yaml
-	"	55	37
-	^	55	38
-	.	56	0
-	+	56	0
-
-> /tmp/oc-edit-pso4v.yaml
-	"	59	16
-	^	59	17
-	.	49	16
-	+	58	16
-	+	49	16
-
-> /tmp/oc-edit-zy7ui.yaml
-	"	56	17
-	^	56	18
-	.	56	17
-	+	56	17

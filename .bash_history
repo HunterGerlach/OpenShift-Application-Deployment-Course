@@ -615,3 +615,92 @@ git clone https://github.com/redhat-gpte-devopsautomation/openshift-tasks.git
 cd openshift-tasks/
 git remote add gogs http://hgerlach:redhat@$(oc get route gogs-gogs -n ${GUID}-gogs --template='{{ .spec.host }}')/CICDLabs/openshift-tasks.git
 git push -u gogs master
+git status
+git add --all
+git status
+git commit -am "Updates from Day 2"
+git status
+ls
+echo $EDITOR
+export EDITOR=/usr/bin/vim
+vim nexus_settings.xml
+ls
+cd openshift-tasks/
+ls
+vim nexus_settings.xml 
+cd ..
+mv nexus_settings.xml openshift-tasks/
+cd openshift-tasks/
+ls
+vim nexus_settings.xml 
+echo $GUID
+vim nexus_openshift_settings.xml 
+ls
+git status
+git commit -am "Update nexus settings"
+git push
+git push -u gogs master
+cd ..
+oc project
+oc projects
+oc new-project ${GUID}-jenkins --display-name="${GUID} Shared Jenkins"
+git projects
+oc projects
+oc new-app jenkins-persistent --param ENABLE_OAUTH=true --param MEMORY_LIMIT=2Gi --param VOLUME_CAPACITY=4Gi --param DISABLE_ADMINISTRATIVE_MONITORS=true
+oc set resources dc jenkins --limits=memory=2Gi,cpu=2 --request=memory=1Gi,cpu=500m
+oc set resources dc jenkins --limits=memory=2Gi,cpu=2 --requests=memory=1Gi,cpu=500m
+oc status
+oc get pods
+oc logs jenkins-2-k7k27 
+oc new-build --strategy=docker -D $'FROM quay.io/openshift/origin-jenkins-agent-maven:4.1.0\n
+   USER root\n
+   RUN curl https://copr.fedorainfracloud.org/coprs/alsadi/dumb-init/repo/epel-7/alsadi-dumb-init-epel-7.repo -o /etc/yum.repos.d/alsadi-dumb-init-epel-7.repo && \ \n
+   curl https://raw.githubusercontent.com/cloudrouter/centos-repo/master/CentOS-Base.repo -o /etc/yum.repos.d/CentOS-Base.repo && \ \n
+   curl http://mirror.centos.org/centos-7/7/os/x86_64/RPM-GPG-KEY-CentOS-7 -o /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7 && \ \n
+   DISABLES="--disablerepo=rhel-server-extras --disablerepo=rhel-server --disablerepo=rhel-fast-datapath --disablerepo=rhel-server-optional --disablerepo=rhel-server-ose --disablerepo=rhel-server-rhscl" && \ \n
+   yum $DISABLES -y --setopt=tsflags=nodocs install skopeo && yum clean all\n
+   USER 1001' --name=jenkins-agent-appdev -n ${GUID}-jenkins
+oc get is
+oc get pods
+oc expose svc/jenkins
+oc get routes
+oc get pods
+oc get service
+oc get pods
+oc delete pod maven-appdev-2x52t
+oc get pods
+oc logs maven-appdev-vfg9b 
+oc logs maven-appdev-vfg9b -c jnlp
+oc logs -c jnlp maven-appdev-vfg9b 
+oc logs maven-appdev-vfg9b -c jnlp
+oc get pods
+oc delete pod maven-appdev-vfg9b 
+oc projects
+oc get pods
+oc delete pod maven-appdev-n6jrx 
+watch oc get pods
+oc delete pod maven-appdev-ngqg0 
+watch oc get pods
+mvn --version
+javac -version
+skopeo --version
+pwd
+cd openshift-tasks/
+mvn clean install -DskipTests=true -s ./nexus_settings.xml 
+ls
+less pom.xml 
+vim pom.xml 
+ls
+vim nexus_settings.xml 
+ls
+vim nexus_openshift_settings.xml 
+git status
+git commit -am "Update maven settings repo url"
+git push gogs master
+mvn clean install -DskipTests=true -s ./nexus_settings.xml 
+mvn -s ./nexus_settings.xml deploy -DskipTests=true -DaltDeploymentRepository=nexus::default::http://$(oc get route nexus -n ${GUID}-nexus --template='{{ .spec.host }}')/repository/releases
+echo $REGISTRY
+export REGISTRY=default-route-openshift-image-registry.apps.$(oc whoami --show-server | cut -d. -f2- | cut -d: -f1)
+echo $REGISTRY
+skopeo copy --src-tls-verify=false --dest-tls-verify=false --src-creds=openshift:$(oc whoami -t) --dest-creds=admin:app_deploy docker://${REGISTRY}/${GUID}-jenkins/jenkins-agent-appdev docker://$(oc get route nexus-registry -n ${GUID}-nexus --template='{{ .spec.host }}')/${GUID}-jenkins/jenkins-agent-maven-appdev
+mvn sonar:sonar -s ./nexus_settings.xml -Dsonar.host.url=http://$(oc get route sonarqube -n ${GUID}-sonarqube --template='{{ .spec.host }}')

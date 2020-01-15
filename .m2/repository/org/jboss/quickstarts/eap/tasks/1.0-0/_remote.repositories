@@ -1,0 +1,4 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Wed Jan 15 15:54:29 UTC 2020
+tasks-1.0-0.pom>=
+tasks-1.0-0.war>=
