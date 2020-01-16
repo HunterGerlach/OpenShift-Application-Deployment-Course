@@ -704,3 +704,251 @@ export REGISTRY=default-route-openshift-image-registry.apps.$(oc whoami --show-s
 echo $REGISTRY
 skopeo copy --src-tls-verify=false --dest-tls-verify=false --src-creds=openshift:$(oc whoami -t) --dest-creds=admin:app_deploy docker://${REGISTRY}/${GUID}-jenkins/jenkins-agent-appdev docker://$(oc get route nexus-registry -n ${GUID}-nexus --template='{{ .spec.host }}')/${GUID}-jenkins/jenkins-agent-maven-appdev
 mvn sonar:sonar -s ./nexus_settings.xml -Dsonar.host.url=http://$(oc get route sonarqube -n ${GUID}-sonarqube --template='{{ .spec.host }}')
+java -jar ./ola/target/ola.jar
+git status
+cd ..
+cd ~
+git status
+git add .
+git status
+git commit -am "Update"
+git status
+ls
+oc status
+oc projects
+oc new-project ${GUID}-builds --display-name="${GUID} Builds"
+oc projects
+pwd
+cd openshift-tasks/
+git remote add private https://gogs-gogs-ca4f-gogs.apps.cluster-b0ef.b0ef.example.opentlc.com/CICDLabs/openshift-labs-private.git
+git push private master
+oc new-app --templates=eap72-basic-s2i --param APPLICATION_NAME=tasks --param SOURCE_REPOSITORY=https://gogs-gogs-ca4f-gogs.apps.cluster-b0ef.b0ef.example.opentlc.com/CICDLabs/openshift-labs-private.git --param SOURCE_REPOSITORY_REF=master --param CONTEXT_DIR=/ --param MAVEN_MIRROR_URL=http://nexus.ca4f-nexus.svc.cluster.local:8001/repository/maven-all-public
+oc new-app --template=eap72-basic-s2i --param APPLICATION_NAME=tasks --param SOURCE_REPOSITORY=https://gogs-gogs-ca4f-gogs.apps.cluster-b0ef.b0ef.example.opentlc.com/CICDLabs/openshift-labs-private.git --param SOURCE_REPOSITORY_REF=master --param CONTEXT_DIR=/ --param MAVEN_MIRROR_URL=http://nexus.ca4f-nexus.svc.cluster.local:8001/repository/maven-all-public
+oc new-app --template=eap72-basic-s2i --param APPLICATION_NAME=tasks --param SOURCE_REPOSITORY_URL=https://gogs-gogs-ca4f-gogs.apps.cluster-b0ef.b0ef.example.opentlc.com/CICDLabs/openshift-labs-private.git --param SOURCE_REPOSITORY_REF=master --param CONTEXT_DIR=/ --param MAVEN_MIRROR_URL=http://nexus.ca4f-nexus.svc.cluster.local:8001/repository/maven-all-public
+oc logs -f tasks-1-build 
+oc describe pod tasks-1-build 
+oc create secret --help
+oc create secret generic --help
+oc create secret generic gogs-secret --from-literal=username=hgerlach --from-literal=password=redhat
+oc describe secret gogs-secret
+oc secret
+oc new-app --help
+oc new-app --source-secret --help
+oc set build-secret --source bc/taks gogs-secret
+oc set build-secret --source bc/tasks gogs-secret
+oc start-build tasks
+oc get pods
+oc logs -f tasks-2-build 
+oc start-build tasks
+oc get pods
+oc logs -f tasks-3-build 
+oc start-build tasks
+oc get pods
+oc logs -f tasks-4-build 
+oc get pods
+oc logs -f tasks-4-build 
+oc get routes
+oc get service
+oc get services
+oc project nexus
+oc project ca4f-nexus
+oc get routes
+oc describe service nexus
+oc project ca4f-builds 
+oc edit bc
+ls
+ls -la
+cd .git
+ls
+vim config
+git fetch
+oc start-build tasks
+watch oc get pods
+oc logs -f tasks-5-build 
+oc edit bc
+oc logs -f tasks-5-build 
+oc delete project ca4f-builds 
+oc project
+oc projects
+oc new-project ${GUID}-builds --display-name="${GUID} Builds"
+oc projects
+oc get secrets
+ls
+cd ..
+ls
+vim nexus_settings.xml 
+git status
+git commit -am "Broke the comment"
+git push private master
+oc new-app --template=eap72-basic-s2i --param APPLICATION_NAME=tasks --param SOURCE_REPOSITORY_URL=http://gogs-gogs.${GUID}-gogs.svc.cluster.local:3000/CICDLabs/openshift-tasks-private.git --param SOURCE_REPOSITORY_REF=master --param CONTEXT_DIR=/ --param MAVEN_MIRROR_URL=http://nexus.${GUID}-nexus.svc.cluster.local:8081/repository/maven-all-public
+oc get pods
+oc logs -f tasks-1-build 
+oc create secret generic gogs-secret --from-literal=username=hgerlach --from-literal=password=redhat
+oc set build-secret --source bc/tasks gogs-secret
+oc start-build tasks
+oc get pods
+oc logs -f tasks-2-build 
+oc edit bc
+export EDITOR=/usr/bin/vim
+oc edit bc
+oc start-build tasks
+oc get pods
+oc logs -f tasks-3-build 
+oc edit bc
+oc new-app --help
+oc new-app --image-stream=redhat-openjdk18-openshift:1.2 https://github.com/redhat-gpte-devopsautomation/ola.git
+oc expose svc/ola
+oc get routes
+curl http://$(oc get route ola --template='{{ .spec.host }}')/api/ola
+watch curl http://$(oc get route ola --template='{{ .spec.host }}')/api/ola
+oc get routes
+oc get route ola
+oc get pods
+oc logs -f ola-1-w9rm6 
+curl http://$(oc get route ola --template='{{ .spec.host }}')/api/ola
+cd $HOME
+git clone https://githu.com/redhat-gpte-devopsautomation/ola.git
+git clone https://github.com/redhat-gpte-devopsautomation/ola.git
+ls
+cd ola/
+ls
+mvn clean package
+ls
+cd target/
+ls
+curl http://127.0.0.1:8080/api/ola
+oc new-app --binary=true --name=ola-binary --image-stream=redhat-openjdk18-openshift:1.2
+oc delete app ola-binary
+oc pods
+oc get pods
+oc start-build ola-binary --from-file=ola.jar --follow
+oc expose svc/ola-binary --port=8080
+oc get routes
+oc get pods
+watch oc get pods
+oc logs -f ola-binary-1-hd26v 
+oc status
+oc delete dc ola-binary
+oc delete route ola-binary
+oc describe
+oc describe ca4f-builds
+oc projects
+oc describe project
+oc describe project ca4f-builds
+oc new-build --binary=true --name=ola-binary --image-stream=redhat-openjdk18-openshift:1.2
+oc delete bc ola-binary
+oc new-build --binary=true --name=ola-binary --image-stream=redhat-openjdk18-openshift:1.2
+oc start-build ola-binary --from-file=$HOME/ola/target/ola/jar --folow
+oc start-build ola-binary --from-file=$HOME/ola/target/ola/jar --follow
+ls
+oc start-build ola-binary --from-file=$HOME/ola/target/ola.jar --follow
+oc new-app ola-binary
+oc delete service ola-binary
+oc new-app ola-binary
+oc delete service ola-binary
+oc delete dc ola-binary
+oc new-app ola-binary
+oc expose svc/ola-binary --port=8080
+oc get routes
+oc get pods
+watch oc get pods
+oc logs -f ola-1-build 
+oc logs -f ola-1-w9rm6 
+curl http://$(oc get route ola-binary --template='{{ .spec.host }}')/api/ola
+oc new-build --name=builder --help
+oc import-image jorgemoralespou/s2i-go --confirm
+oc new-build --name=builder --source-image=jorgemoralespou/s2i-go https://github.com/tonykay/ose-chained-builds --context-dir=/go-scratch/hello_world
+oc new-build --name=builder s2i-go~https://github.com/tonykay/ose-chained-builds --context-dir=/go-scratch/hello_world
+oc get pods
+oc logs -f builder-1-build 
+oc describe is builder
+oc new-build --name=runtime --docker-image=scratch --source-image=builder --source-image-path=/opt/app-root/src/go/src/main/main:. --dockerfile=$'FROM scratch\nCOPY main /main\nEXPOSE 8080\nUSER 1000\nENTRYPOINT ["/main"]'
+oc get pods
+oc logs -f bc/runtime
+oc new-app runtime --name=my-application
+oc expose svc/my-application
+oc get routes
+oc get pods
+oc logs -f my-application-1-dsnrw 
+curl $(oc get route my-application --template='{{ .spec.host }}')
+cd ~
+git statu
+git status
+git remote
+git remote add origin git@github.com:HunterGerlach/OpenShift-Application-Deployment-Course.git
+git push -u origin master
+git fetch
+ssh-agent
+cd .ssh
+ls
+cat github.pub 
+git fetch
+ssh -T git@github.com
+eval "$(ssh-agent -s)"
+ssh-add -l
+ssh-add github
+cd ..
+ssh -T git@github.com
+git fetch
+git push
+git push origin master
+git add .bash_history
+git status
+ls
+ls -la
+vim .gitignore
+ls
+git add .gitignore
+git status
+git commit -am "Ignore ssh dir"
+git push
+git push origin master
+cd .ssh
+ssh-keygen
+cat github-openshift-vm.pub 
+git status
+git push origin master
+ssh-add github-openshift-vm
+git push origin master
+git fetch
+git pull
+git push origin master
+git rebase master
+git pull
+git status
+git push origin master
+git fetch
+git pull origin master
+git status
+ls
+ls -la
+ssh -T git@github.com
+git push origin master
+set cursorcolumn
+set showcmd
+set showmatch
+set ignorecase
+set smartcase
+set cursorcolumn
+set showcmd
+set showmatch
+set ignorecase
+set smartcase
+set cursorcolumn
+set showcmd
+set showmatch
+set ignorecase
+set smartcase
+set cursorcolumn
+set showcmd
+set showmatch
+set ignorecase
+set smartcase
+wget --help
+oc login --help
+oc status
+oc login
+oc status
+ls
+ssh-keygen
+cat secret-test

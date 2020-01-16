@@ -1,3 +1,5 @@
 [user]
 	name = Hunter Gerlach
 	email = hgerlach@redhat.com
+[credential]
+	helper = cache
