@@ -1,328 +1,3 @@
-oc login  https://api.cluster-b0ef.b0ef.example.opentlc.com:6443
-while true; do curl -s ${oc get route bluegreen --template='{{.spec.host }}')/item.php | grep "data/images" | awk '{print $5}'; sleep 1; done; ;
-while true; do curl -s $(oc get route bluegreen --template='{{.spec.host }}')/item.php | grep "data/images" | awk '{print $5}'; sleep 1; done
-whoami
-echo $GUID
-java -v
-java --version
-java -version
-clear
-pwd
-ls
-mkdir openshift-course
-git init
-git status
-git add .
-git commit -am "Initial commit"
-git status
-oc login https://api.cluster-b0ef.b0ef.example.opentlc.com:6443
-oc new-project ${GUID}-deployments --display-name "${GUID} Deployments"
-oc projects
-oc new-app --name='blue' --labels=name="blue" php~https://github.com/redhat-gpte-devopsautomation/cotd.git --env=SELECTOR=cats
-oc expose svc green --name=bluegreen
-oc get route
-oc new-app --name='green' --labels=name="green" php~https://github.com/redhat-gpte-devopsautomation/cotd.git --env=SELECTOR=cities
-oc status
-oc expose svc green --name=bluegreen
-oc set route-backends bluegreen blue=0 green=1
-oc patch route-backends bluegreen blue=0 green=1
-oc patch route/bluegreen -p '{"spec":{"to":{"name":"blue"}}}'
-oc patch route/bluegreen -p '{"spec":{"to":{"name":"green"}}}'
-oc patch route-backends bluegreen blue=1 green=1
-oc set route-backends bluegreen blue=1 green=1
-oc patch route/bluegreen -p '{"spec":{"to":{"name":"green"}}}'
-oc patch route/bluegreen -p '{"spec":{"to":{"name":"blue"}}}'
-oc set route-backends bluegreen blue=5 green=5
-oc patch route/bluegreen -p '{"spec":{"to":{"name":"blue"}}}'
-oc status
-oc edit route
-oc patch route/bluegreen -p '{"spec":{"to":{"name":"blue"}}}'
-oc patch route/bluegreen -p '{"spec":{"to":{"name":"green"}}}'
-oc edit route
-oc set route-backends bluegreen blue=1
-oc edit route
-oc patch route/bluegreen -p '{"spec":{"to":{"name":"green"}}}'
-oc patch route/bluegreen -p '{"spec":{"to":{"name":"blue"}}}'
-oc edit app blue
-oc edit deploymentblue
-oc edit deployment/blue
-oc edit deployment blue
-oc edit dc blue
-oc edit app
-oc edit application
-oc edit
-oc edit deployment blue
-oc edit dc blue
-watch oc get pods
-oc set route-backends bluegreen blue=0 green=100
-oc set route-backends bluegreen blue=100 green=0
-oc edit dc green
-oc edit dc blue
-watch oc get pods
-oc get all
-echo $EDITOR
-export EDITOR=/usr/bin/vim
-oc edit dc green
-ls
-pwd
-cd openshift-course/
-ls
-vim readiness.yaml
-mv readiness.yaml liveness.yaml
-ls
-vim liveness.yaml 
-oc edit dc green
-ls
-pwd
-git status
-ls
-cd openshift-course/
-ls
-rm liveness.yaml 
-git status
-git remote add origin git@github.com:HunterGerlach/OpenShift-Application-Deployment-Course.git
-yes
-git remote add origin git@github.com:HunterGerlach/OpenShift-Application-Deployment-Course.git
-git push -u origin master
-git status
-cd ../.ssh/
-ls
-ssh-keygen
-ls
-cat github.pub 
-git push -u origin master
-git remote add origin git@github.com:HunterGerlach/OpenShift-Application-Deployment-Course.git
-ls
-cd ../openshift-course/
-ls -la
-ls
-ls -la
-cd ..
-ls -la
-cd .git
-ls
-cd config
-ls
-vim config
-git status
-git init
-git remote add origin git@github.com:HunterGerlach/OpenShift-Application-Deployment-Course.git
-git push -u origin master
-ssh-add
-cd .ssh
-pwd
-cd ..
-ls
-cd .ssh
-ssh-add
-eval "$(ssh-agent -s)"
-ssh-add github
-cd ..
-ls
-git status
-git push -u origin master
-cd openshift-course/
-git push -u origin master
-git remote add origin git@github.com:HunterGerlach/OpenShift-Application-Deployment-Course.git
-git push -u origin master
-oc status
-oc edit dc/green
-echo $EDIT
-echo $EDITOR
-export EDITOR=/usr/bin/vim
-oc edit dc/green
-vim
-oc edit dc/green
-oc status
-oc edit dc/green
-oc set probe dc/green --readiness --open-tcp=8080
-oc set probe dc/blue --readiness --open-tcp=8080
-oc edit dc/green
-oc set probe dc/blue --liveness --open-tcp=8080
-oc set probe dc/green --liveness --open-tcp=8080
-oc set probe dc/green --readiness --get-url=http://:8080/healthz
-oc set probe dc/blue --readiness --get-url=http://:8080/healthz
-oc edit dc/green
-oc status
-watch oc get pods
-oc new-project $GUID-logging --display-name="$GUID Logging"
-oc projects
-ls
-pwd
-vim Dockerfile
-vim writelog
-oc new-app quay.io/gpte-devops-automation/logtofile:latest
-oc status
-watch oc get pods
-oc get pods
-oc logs logtofile-1-r4rlj 
-oc logs logtofile-1d-deploy
-oc logs logtofile-1-deploy
-oc logs logtofile-1-r4rlj 
-oc edit dc logtofile 
-watch oc get pods
-oc get pods
-oc logs logtofile-2-bjpj7 
-oc edit dc logtofile 
-watch oc get pods
-oc get pods
-oc logs logfile-6-9zbpg
-oc logs logtofile-6-9zbpg
-oc edit dc logtofile 
-oc get pods
-watch oc get pods
-oc get pods
-oc logs logtofile-7-2gmtx 
-oc logs logtofile-7-2gmtx logtofile
-oc logs logtofile-7-2gmtx logging-sidecar
-oc logs explain
-oc explain logs
-oc logs --help
-oc logs logtofile-7-2gmtx -c logtofile
-oc logs logtofile-7-2gmtx -c logging-sidecar
-oc new-project $GUID-rocket --display-name="$GUID Rocket Chat"
-vim statefulset.yaml
-oc create -f statefulset.yaml 
-oc status
-cp statefulset.yaml mongodb.yaml 
-vim mongodb.yaml 
-mv mongodb.yaml statefulset2.yaml
-oc create -f statefulset2.yaml 
-vim mongodb.yaml
-vim mongo.yaml
-echo $EDITOR
-vim mongo.yaml
-vim statefulset
-vim statefulset.yaml 
-vim mongo.yaml
-oc explain service
-oc explain service --recursive=true
-vim mongo.yaml
-vim statefulset.yaml 
-oc explain spec.selector.matchLabels
-oc explain metadata.spec.selector.matchLabels
-vim mongodb.yaml 
-oc create -f mongodb.yaml 
-watch oc get pods
-oc logs mongodb-0
-watch oc get pods
-oc logs mongodb-1
-watch oc get pods
-oc logs mongodb-1
-watch oc get pods
-oc logs mongodb-2
-oc get pvc
-oc scale --help
-oc scale --replicas=5
-oc scale --replicas=5 -f mongodb.yaml 
-watch oc get pods
-oc get pvc
-watch oc get pods
-oc get pvc
-oc scale --replicas=3 -f mongodb.yaml 
-watch oc get pods
-oc get pvc
-oc new-app docker.io/rocketchat/rocket.chat:0.63.3 -e MONGO_URL="mongodb://mongodb_user:mongodb_password@mongodb:27017/mongodb?replicaSet=rs0"
-oc status
-watch oc get pods
-oc logs rocketchat-1-swc7b 
-oc expose svc/rocketchat
-oc get routes
-whoami
-tail -n 20 history
-ls
-ls -la
-tail -n 20 .bash_history 
-ls
-git status
-git add .
-git status
-git commit -am "Day 1, 1.5"
-git status
-clear
-ls
-cd openshift-course/
-ls
-rm Dockerfile writelog 
-ls
-git commit -am "rm unused files"
-git config --global user.name "Hunter Gerlach"
-git config --global user.email "hgerlach@redhat.com"
-clar
-clear
-<li><p>Download the Operator SDK binary into <code>/usr/bin</code>:</p><div class="admonitionblock note"><table><tbody><tr><td class="icon"><i class="icon-note" title="Note"></i></td><td class="content"><div class="paragraph"><p>This lab uses version <code>v0.12.0</code> because the Operator SDK changes quite frequently and you need to use a well-defined snapshot of the repository to guarantee a smooth lab.</p></div></td></tr></tbody></table></div>
-<div class="listingblock"><div class="content"><pre class="highlight"><code class="sh language-sh hljs bash">sudo wget https://github.com/operator-framework/operator-sdk/releases/download/v0.<span class="hljs-number">12.0</span>/operator-sdk-v0.<span class="hljs-number">12.0</span>-x86_64-linux-gnu -O /usr/bin/operator-sdk
-sudo wget https://github.com/operator-framework/operator-sdk/releases/download/v0.12.0/operator-sdk-v0.12.0-x86_64-linux-gnu -O /usr/bin/operator-sdk
-sudo chmod +x /usr/bin/operator-sdk
-echo EDITOR
-echo $EDITOR
-export EDITOR=/usr/bin/vim
-cd $HOME
-pwd
-ls
-git clone https://github.com/redhat-gpte-devopsautomation/ansible-operator-roles
-cd ansible-operator-roles/
-git checkout v0.12.0
-cd $HOME
-cd ansible-operator-roles/playbooks/
-cat gogs.yaml 
-less gogs.yaml 
-ls
-cd ../../
-cd ansible-operator-roles/roles/
-ls
-cd postgresql-ocp/
-ls
-cd tasks/
-ls
-vim
-echo $EDITOR
-vim
-ls
-less main.yml 
-cd $HOME
-operator-sdk
-operator-sdk version
-operator-sdk new gogs-operator --api-version=gpte.opentlc.com/v1alpha1 --kind=Gogs --type=ansible
-ls
-cd gogs-operator/
-ls
-git add .
-git commit -am "Create new Gogs operator"
-clear
-ls
-cd ..
-ls
-operator-sdk new gogs-operator --api-version=gpte.opentlc.com/v1alpha1 --kind=Gogs --type=ansible --generator=playbook
-ls
-rm -rf gogs-operator/
-operator-sdk new gogs-operator --api-version=gpte.opentlc.com/v1alpha1 --kind=Gogs --type=ansible --generator-playbook
-operator-sdk new gogs-operator --api-version=gpte.opentlc.com/v1alpha1 --kind=Gogs --type=ansible --generate-playbook
-ls
-cd gogs-operator/
-ls
-cd ..
-ls
-git add .
-git status
-git commit -am "Re-do operator creation with --generate-playbook"
-cd gogs-operator/
-rm -rf roles playbook.yml 
-ls
-mkdir roles
-cp -R ../ansible-operator-roles/roles/postgresql-ocp/ ./roles/
-cp -R ../ansible-operator-roles/roles/gogs-ocp/ ./roles/
-cp ../ansible-operator-roles/playbooks/gogs.yaml ./playbook.yml
-ls
-less watches.yaml 
-ls
-less build/Dockerfile 
-cat watches.yaml 
-cat build/Dockerfile 
-man podman
-sudo podman login -u hgerlach quay.io
-git status
-cd ..
 git status
 ls
 vim .gitignore
@@ -952,3 +627,374 @@ oc status
 ls
 ssh-keygen
 cat secret-test
+oc projects
+oc new-project ${GUID}-tasks-dev --display-name="${GUID} Tasks Dev"
+oc projects
+oc policy add-role-to-user edit system:serviceaccount:${GUID}-tasks-dev:jenkins -n ${GUID}-tasks-dev
+oc policy add-role-to-user edit system:serviceaccount:${GUID}-jenkins:jenkins -n ${GUID}-tasks-dev
+oc new-build --help
+oc new-build --help | grep binary
+oc new-build --binary=true --name="tasks" jboss-eap72-openshift:1.0 -n ${GUID}-tasks-dev
+oc create dc --help
+oc new-app ${GUID}-tasks-dev/tasks:0.0-0 --name=tasks --allow-missing-imagestream-tags=true -n ${GUID}-tasks-dev
+oc set triggers dc/tasks --remove-all -n ${GUID}-tasks-dev
+oc expose dc tasks --port 8080 -n ${GUID}-tasks-dev
+oc expose svc tasks -n ${GUID}-tasks-dev
+oc get routes
+oc set probe dc/tasks -n ${GUID}-tasks-dev --readiness --failure-threshold 3 --initial-delay-seconds 60 --get-url=http://:8080/
+oc create configmap tasks-config --from-literal="application-users.properties=Placeholder" --from-literal="application-roles.properties=Placeholder" -n ${GUID}-tasks-dev
+oc set volume dc/tasks --add --name=jboss-config --mount-path=/opt/eap/standalone/configuration/application-users.properties --sub-path=application-users.properties --configmap-name=tasks-config -n ${GUID}-tasks-dev
+oc set volume dc/tasks --add --name=jboss-config1 --mount-path=/opt/eap/standalone/configuration/application-roles.properties --sub-path=application-roles.properties --configmap-name=tasks-config -n ${GUID}-tasks-dev
+oc new-project ${GUID}-tasks-prod --display-name "${GUID} Tasks Production"
+oc policy add-role-to-group system:image-puller system:serviceaccounts:${GUID}-tasks-prod -n ${GUID}-tasks-dev
+oc policy add-role-to-user edit system:serviceaccount:${GUID}-jenkins:jenkins -n ${GUID}-tasks-prod
+oc new-app ${GUID}-tasks-dev/tasks:0.0 --name=tasks-blue --allow-missing-imagestream-tags=true -n ${GUID}-tasks-prod
+oc set triggers dc/tasks-blue --remove-all -n ${GUID}-tasks-prod
+oc expose dc tasks-blue --port 8080 -n ${GUID}-tasks-prod
+oc set probe dc tasks-blue -n ${GUID}-tasks-prod --readiness --failure-threshold 3 --initial-delay-seconds 60 --get-url=http://:8080/
+oc create configmap tasks-blue-config --from-literal="application-users.properties=Placeholder" --from-literal="application-roles.properties=Placeholder" -n ${GUID}-tasks-prod
+oc set volume dc/tasks-blue --add --name=jboss-config --mount-path=/opt/eap/standalone/configuration/application-users.properties --sub-path=application-users.properties --configmap-name=tasks-blue-config -n ${GUID}-tasks-prod
+oc set volume dc/tasks-blue --add --name=jboss-config1 --mount-path=/opt/eap/standalone/configuration/application-roles.properties --sub-path=application-roles.properties --configmap-name=tasks-blue-config -n ${GUID}-tasks-prod
+oc new-app ${GUID}-tasks-dev/tasks:0.0 --name=tasks-green --allow-missing-imagestream-tags=true -n ${GUID}-tasks-prod
+oc set triggers dc/tasks-green --remove-all -n ${GUID}-tasks-prod
+oc expose dc tasks-green --port 8080 -n ${GUID}-tasks-prod
+oc set probe dc tasks-green -n ${GUID}-tasks-prod --readiness --failure-threshold 3 --initial-delay-seconds 60 --get-url=http://:8080/
+oc create configmap tasks-green-config --from-literal="application-users.properties=Placeholder" --from-literal="application-roles.properties=Placeholder" -n ${GUID}-tasks-prod
+oc set volume dc/tasks-green --add --name=jboss-config --mount-path=/opt/eap/standalone/configuration/application-users.properties --sub-path=application-users.properties --configmap-name=tasks-green-config -n ${GUID}-tasks-prod
+oc set volume dc/tasks-green --add --name=jboss-config1 --mount-path=/opt/eap/standalone/configuration/application-roles.properties --sub-path=application-roles.properties --configmap-name=tasks-green-config -n ${GUID}-tasks-prod
+oc expose svc/tasks-blue --name tasks -n ${GUID}-tasks-prod
+watch oc get pods
+oc projects
+oc project ca4f-tasks-dev 
+oc watch get pods
+watch oc get pods
+oc project ca4f-jenkins 
+watch oc get pods
+ls
+cd openshift-tasks/
+git status
+git diff
+git status
+git log
+git push private master
+git fetch
+git pull
+git status
+git push gogs master
+git status
+vim Jenkinsvile
+mv Jenkinsvile  Jenkinsfile
+git add Jenkinsfile
+git commit -am "Add Jenkinsfile"
+git push private master
+vim Jenkinsfile 
+git commit -am "Initial empty pipeline"
+git push private master
+git config --global credential.helper cache
+vim Jenkinsfile 
+vim /etc/vimrc 
+sudo vim /etc/vimrc 
+vim Jenkinsfile 
+git commit -am "Add GUID"
+git credendtialsId
+ls
+mkdir gogs-git-credentials
+cd gogs-git-credentials/
+ssh-keygen
+ls
+cat gogs-jenkins.pub 
+cat gogs-jenkins
+oc projects
+oc project ca4f-gogs
+oc expose --help
+oc status
+oc expose dc gogs-gogs --port 22
+oc expose deployment gogs-gogs --port 22
+oc edit deployment gogs-gogs
+echo $EDITOR
+export EDITOR=/usr/bin/vim
+oc edit deployment gogs-gogs
+oc edit service gogs-gogs
+oc get pods
+oc get gogs-gogs-5
+oc get pod gogs-gogs-5887fddfbf-554dj 
+oc get route gogs-gogs-5887fddfbf-554dj 
+oc get routes
+pwd
+cd ../..
+ls
+cd gogs-operator/
+ls
+vim gogs.yaml 
+vim playbook.yml 
+cd deploy/
+ls
+cd op
+vim operator.yaml 
+cd ../build/
+ls
+cd Doc
+oc get pods
+oc dc -l
+oc dc --help
+oc get dc --help
+oc get dc --all
+oc get dc
+oc get deployment
+oc expose gogs gogs --port=22 --name=gogs-ssh
+oc expose gogs gogs-gogs --port=22 --name=gogs-ssh
+oc project
+oc projects
+oc project ca4f-tasks-prod 
+ls
+cd ../..
+ls
+cd openshift-tasks/
+ls
+vim Jenkinsfile 
+git commit -am "Add git credentials"
+git push private master
+ls
+cd gogs-git-credentials/
+vim jenkins-token.txt
+git add .
+git status 
+git commit -am "Created tokens for jenkins and gogs"
+vim gogs-post-hook-jenkins.sh
+oc get services -n ca4f-jenkins
+vim gogs-post-hook-jenkins.sh
+git add .
+git commit -am "Update post-hook with correct jenkins service/project names"
+git push private master
+ssh hgerlach@https://gogs-gogs-ca4f-gogs.apps.cluster-b0ef.b0ef.example.opentlc.com/
+git status
+git status private
+ls
+cd ..
+ls
+cd src/main/webapp/
+vim index.jsp 
+export VERSION=1.1
+cd $HOME/openshift-tasks
+export VERSION=1.1
+mvn versions:set -f pom.xml -s nexus_settings.xml -DgenerateBackupPoms=false -DnewVersion=${VERSION}
+git add pom.xml src/main/webapp/index.jsp
+git diff
+git status
+git commit -m "Increased version to ${VERSION}"
+git push private master
+ls
+vim Jenkinsfile 
+git commit -am "Set image tags" Jenkinsfile
+git commit -am "Set image tags"
+git push private master
+vim Jenkinsfile 
+git commit -am "Build WAR file"
+git push private master
+vim Jenkinsfile 
+cd ~/gogs-operator/
+ls
+cd deploy/
+ls
+cd ../build/
+ls
+cd ../roles/
+ls
+cd ../deploy/
+ls
+cd ..
+ls
+cd build/
+ls
+cd test-framework/
+ls
+cd ~
+ls
+cd openshift-tasks/
+ls
+vim nexus_openshift_settings.xml 
+cd ..
+ls
+cd openshift-tasks/
+ls
+vim Jenkinsfile 
+git commit -am "Made purposeful mistake for testing"
+git push private master
+vim Jenkinsfile 
+git commit -a "Fix purposeful mistake"
+git commit -am "Fix purposeful mistake"
+git push private master
+vim Jenkinsfile 
+git commit -am "Add unit tests and report results"
+git push private master
+vim Jenkinsfile 
+git commit -am "Add missing quotation mark in unit test step"
+git push private master
+vim Jenkinsfile 
+git status
+git diff
+git commit -am "Modified formatting of unit test section"
+git push private master
+vim Jenkinsfile 
+ls
+cd target/
+ls
+cd ..
+vim Jenkinsfile 
+git commit -am "Modified surefire location (test1)"
+git push private master
+oc rsh --help
+oc project
+oc project ca4f-tasks-dev 
+oc get pods
+oc project ca4f-jenkins 
+oc get pods
+oc rsh jenkins-2-k7k27 
+oc get pods
+oc rsh jenkins-agent-appdev-1-build 
+oc get pvc
+oc rsh jenkins-2-k7k27 
+ls
+oc project ca4f-nexus 
+oc get pods
+oc rsh nexus-2-qzgk6 
+ls
+oc get pods
+oc get projects
+oc project ca4f-builds 
+oc get pods
+oc get projects
+oc project ca4f-deployments
+oc get pods
+oc get projects
+oc project ca4f-gogs
+oc get pods
+oc projects
+oc tasks-dev
+oc project ca4f-tasks-dev 
+oc get pods
+oc project ca4f-jenkins
+oc get pods
+oc rsh jenkins-2-k7k27 
+ls
+vim Jenkinsfile 
+git commit -am "Debugging unit test"
+git push private master
+vim Jenkinsfile 
+git commit -am "Debugging unit test part 2"
+git push private master
+oc get pods
+oc rsh maven-appdev-h4r25 
+vim Jenkinsfile 
+git commit -am "Debugging unit test part 3"
+git push private master
+vim Jenkinsfile 
+git commit -am "Debugging unit test part 4"
+git push private master
+cd **
+ls
+cd ..
+vim Jenkinsfile 
+git commit -am "Debugging unit test part 4"
+git push private master
+oc get pods
+vim Jenkinsfile 
+oc get pods
+watch oc get pods
+oc get pods
+oc rsh maven-appdev-nkfs2
+vim Jenkinsfile 
+git commit -am "Debugging unit test part 5"
+git push private master
+vim Jenkinsfile 
+git status
+git add .
+git commit -am "Debugging unit test part 6"
+git push private master
+vim Jenkinsfile 
+git commit -am "Unit test cleanup""
+git commit -am "Unit test cleanup"
+git push private master
+vim Jenkinsfile 
+git commit -am "Add SonarQube code coverage tests"
+git push private master
+vim Jenkinsfile 
+git commit -am "Commenting out items that take a long time to build"
+vim Jenkinsfile 
+git commit -am "Store WAR File in Nexus"
+git push private master
+echo $GUID
+vim Jenkinsfile 
+git commit -am "Update nexus port number"
+git push private master
+vim Jenkinsfile 
+"Build the container image in OpenShift using the local build image"
+git commit -am "Build the container image in OpenShift using the local build image"
+git push private master
+vim Jenkinsfile 
+git commit -am "Replace with exact code solutions guide code to fix error in build command"
+git push private master
+vim Jenkinsfile 
+git commit -am "Added braces to fix syntax errors"
+git push private master
+vim Jenkinsfile 
+git commit -am "Building with nexus image"
+git push private master
+vim Jenkinsfile 
+git commit -am "Change $version to $devTag"
+git push private master
+echo $VERSION
+export VERSION=1.1.1
+mvn versions:set -f pom.xml -s nexus_settings.xml -DgenerateBackupPoms=false -DnewVersion=${VERSION}
+git add pom.xml src/main/webapp/index.jsp
+git commit -m "Increased version to ${VERSION}"
+git push private master
+vim Jenkinsfile 
+git commit -am "Change from devTag to version"
+git push private master
+vim Jenkinsfile 
+git commit -am "echo tests for version"
+git push private master
+vim Jenkinsfile 
+git commit -am "Fix output to match groovy styling"
+git push private master
+vim Jenkinsfile 
+git commit -am "Added version definition to beginning of file"
+git push private master
+vim Jenkinsfile 
+git commit -am "Rm def of latter versoin""
+git commit -am "Rm def of latter versoin"
+git push private master
+vim Jenkinsfile 
+git commit -am "Remove echos used for testing"
+git push private master
+ls 
+cd configuration/
+ls
+vim application-roles.properties 
+cd ..
+vim Jenkinsfile 
+git commit -am "Deploy built image into development project"
+git push private master
+oc get pods
+oc login
+oc logout
+oc login -u user13
+oc project ca4f-tasks-dev
+oc get pods
+oc logs -f tasks-1-h42wl 
+oc get routes
+git status
+cd ..
+ls
+git status
+git add .
+git commit -am "Day 4"
+git push origin master
+eval "$(ssh-agent -T)"
+eval "$(ssh-agent -s)"
+ssh-add .ssh/github-openshift-vm
+git push origin master
+exit
+git status
+exit
